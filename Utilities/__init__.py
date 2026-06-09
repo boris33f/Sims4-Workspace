@@ -48,10 +48,13 @@ def extract_folder(ea_folder, gameplay_folder):
 def compile_module(creator_name, root, mods_folder,mod_name=None):
     src = os.path.join(root, 'Scripts')
     if not mod_name:
-        mod_name=os.path.basename(os.path.normpath(os.path.dirname(os.path.realpath('__file__'))))
+        mod_name = os.path.basename(root)
 
     mod_name = creator_name + '_' + mod_name
     ts4script = os.path.join(root, mod_name + '.ts4script')
+    print(ts4script)
+    if os.path.exists(ts4script):
+        os.remove(ts4script)
 
     ts4script_mods = os.path.join(os.path.join(mods_folder), mod_name + '.ts4script')
 
